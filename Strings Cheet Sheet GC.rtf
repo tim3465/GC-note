@@ -1,0 +1,255 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Cascadia Mono;}{\f2\fnil\fcharset0 Cascadia Mono;}{\f3\fnil\fcharset0 OpenDyslexic;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red163\green21\blue21;\red0\green128\blue0;\red255\green0\blue0;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\qc\f0\fs44 Strings Cheat sheet GC\par
+
+\pard\fi-6677\li6677\sl240\slmult1\ul\b\i\fs20\lang9\par
+\par
+\ulnone\i0\fs28 Code\fs20\tab\fs28 Console\par
+\par
+\lang1033 Characters to string\ul\i\fs20\lang9\par
+
+\pard\sl240\slmult1\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\cf1\ulnone\b0\i0\f1\fs19\lang1033 char\cf2 [] letters = \{ \cf3 'E'\cf2 , \cf3 'T'\cf2 , \cf3 'H'\cf2 , \cf3 'A'\cf2 , \cf3 'N'\cf2  \};\par
+\cf1 string\cf2  myString2 =\cf1 new\cf2  \cf1 string\cf2 (letters)\f2 ;\ul\tab\ulnone ETHAN\ul\par
+\cf0\ulnone\f3\fs20\lang9\par
+\b\fs28\lang1033 Adding two strings together\par
+\par
+\cf1\b0\f1\fs19 string\cf2  myString = \cf3 "Justin"\cf2 ;\par
+\cf1 string\cf2  myString2 = \cf3 "ETHAN"\cf2 ;\par
+\cf1 string\cf2  myString3 = myString +\cf3 " "\cf2 + myString2;\par
+\par
+\cf4 //OR\cf2\par
+\par
+\cf1 string\cf2  myString4 =\cf1 string\cf2 .Concat(myString,\cf3 " "\cf2 , myString2);\par
+\par
+Console.WriteLine(myString3);\ul\f2\tab\ulnone Justin ETHAN\f1\par
+Console.WriteLine(myString4);\ul\f2\tab\ulnone Justin ETHAN\ul\par
+\par
+\par
+\ulnone\b\f3\fs28 Comparing Strings\b0\par
+\fs19 Console.WriteLine(val1==val2);\ul\tab\ulnone false\par
+\par
+Console.WriteLine(val2.Contains(\cf3 "i"\cf2 )); \cf4\ul //partial search\cf0\tab\ulnone true\cf2\ul\par
+\ulnone\par
+Console.WriteLine(String.Compare (val1,val2));\cf4 // non case sensitive\cf0 -1\cf2\par
+\cf4 // don't match -1\cf2\par
+\cf4 //match 0\cf2\par
+\cf4 //partial 1\cf2\par
+Console.WriteLine(val1.ToLower()==val2.ToLower());\ul\tab\ulnone true\fs28\tab\par
+\par
+\b index of\b0\par
+\cf1\f1\fs19 string\cf2  value = \cf3 "session"\cf2 ;\par
+Console.WriteLine(value.IndexOf(\cf3 "ion"\cf2 ));\ul\f2\tab\ulnone 4\par
+\par
+\cf0\b\f3\fs28 last index of\b0\par
+\cf1\f1\fs19 string\cf2  value = \cf3 "session"\cf2 ;\cf0\f3\fs28\par
+\cf2\f1\fs19 Console.WriteLine(value.LastIndexOf(\cf3 "s"\cf2 ));\ul\f2\tab 3\cf0\f3\fs20\par
+\ulnone\par
+\b\fs28 ends with\b0\fs20\lang9\par
+\cf1\f1\fs19 string\cf2  value2 = \cf3 "I entered bootcamp!"\cf2 ;\par
+Console.WriteLine(value2.EndsWith(\cf3 '!'\cf2 ));\ul\f2\lang1033\tab\ulnone true\ul\par
+\par
+\cf0\ulnone\b\f3\fs28 replace\b0\par
+\cf1\f1\fs19 string\cf2  value3 = \cf3 "where_the_sidewalk_ends"\cf2 ;\par
+\cf1 string\cf2  result3 = value3.Replace(\cf3 '_'\cf2 , \cf3 ' '\cf2 );\par
+Console.WriteLine(result3);\ul\f2\tab\ulnone where the sidewalk ends\par
+\cf0\b\f3\fs28 split\par
+\cf1\b0\f1\fs19 string\cf2  value4 = \cf3 "Dragon and Dragon"\cf2 ;\par
+\cf1 string\cf2 [] splitLetters=value4.Split(\cf3 " "\cf2 );\ul\f2\par
+\par
+\cf1\ulnone\f1 foreach\cf2 (\cf1 string\cf2  word \cf1 in\cf2  splitLetters)\par
+\{\par
+    Console.WriteLine(word);\ul\f2\tab\ulnone Dragon\par
+\}\tab and\par
+\tab Dragon\f1\par
+\cf0\b\f3\fs28 substring\cf2\b0\f1\fs19\par
+\cf1 string\cf2  value5 = \cf3 "Storm"\cf2 ;\par
+\cf1 string\cf2  firstLetter = value5.Substring(0,1);\par
+Console.WriteLine(firstLetter);\ul\f2\tab\ulnone s\par
+\par
+\cf0\b\f3\fs28 substring last\par
+\cf1\b0\f1\fs19 string\cf2  value5 = \cf3 "Storm"\cf2 ;\cf0\b\f3\fs28\par
+\cf1\b0\f1\fs19 string\cf2  lastLetter =value5.Substring(value5.Length-1);\par
+Console.WriteLine(lastLetter);\ul\f2\tab\ulnone m\par
+\par
+\cf0\b\f3\fs28 length\par
+\cf2\b0\f1\fs19 Console.WriteLine(value5.Length);\ul\f2\tab\ulnone 5\par
+\cf0\f3\fs20\lang9\par
+\b\fs28 ToUpper or ToLower\par
+\cf1\b0\f1\fs19 string\cf2  value6 = \cf3 "gHHbandGHDKKEJK"\cf2 ;\par
+Console.WriteLine(value6.ToUpper());\ul\f2\lang1033\tab\ulnone GHHBANDGHDKKEJK\f1\lang9\par
+Console.WriteLine(value6.ToLower());\ul\f2\lang1033\tab\ulnone ghhbandghdkkejk\cf0\f3\fs20\lang9\par
+\par
+\b\fs28 trim\cf2\b0\f1\fs19\par
+\cf1 string\cf2  value7 = \cf3 "                    hi justin                       "\cf2 ;\par
+
+\pard\fi-3279\li3279\ri-795\sl240\slmult1 Console.WriteLine(value7);\ul\f2\lang1033\tab\ulnone\f1\lang9                     hi justin\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1 Console.WriteLine(value7.Trim());\ul\f2\lang1033\tab\ulnone hi justin\par
+\par
+\cf0\b\f3\fs28 Example uses\cf2\b0\f1\fs19\par
+\f2\fs16 Console.WriteLine(CorrectCasing(\cf3 "timOTHY"\cf2 ));\ul\tab Timothy\ulnone\par
+\par
+\cf1 string\cf2  FullName = \cf3 "jusTin jonEns"\cf2 ;\par
+\cf1 string\cf2  resolt =\cf3 ""\cf2 ;\par
+\cf1 foreach\cf2  (\cf1 string\cf2  n \cf1 in\cf2  FullName.Split(\cf3 " "\cf2 ))\par
+\{\par
+    resolt += CorrectCasing(n);\par
+    resolt += \cf3 " "\cf2 ;\tab\par
+\par
+\}\par
+Console.WriteLine(resolt);\ul\tab\ulnone Justin Jonens\par
+\par
+\cf4\f1\fs19 //Method\cf2\f2\fs16\par
+
+\pard\ri-795\sl240\slmult1\cf1\lang9 static\cf2  \cf1 string\cf2  CorrectCasing(\cf1 string\cf2  dirty)\par
+\{\par
+    \cf1 string\cf2  cleaned\lang1033  \lang9 =\lang1033  \lang9 dirty.Substring(0,1).ToUpper()+dirty.Substring(1).ToLower();\par
+    \cf1 return\cf2  cleaned;\par
+\}\par
+\par
+\cf0\b\f3\fs28 loop through letters\cf2\b0\f1\fs19\par
+\cf1 string\cf2  input1 = \cf3 "Cocktails"\cf2 ;\par
+\par
+\cf1 for\cf2  (\cf1 int\cf2  i = 0; i < input1.Length; i++)\par
+\{\par
+    Console.WriteLine(input1[i]);\par
+    \cf1 if\cf2  (input1[i] == \cf3 'a'\cf2  || input1[i]==\cf3 'o'\cf2 )\par
+    \{\par
+\par
+    \}\par
+\}\cf0\f2\fs16\par
+\f3\fs20\lang1033\par
+\par
+\b Output\par
+\par
+\b0 C\par
+o\par
+c\par
+k\par
+t\par
+a\par
+i\par
+l\par
+s\par
+\par
+
+\pard\ri-795\sl240\slmult1\qc\f0\fs44 String Formatting Basics Cheat sheet\f3\fs20\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\b\fs28 Composite Formatting\f0\fs24\par
+\cf1\b0 <\lang9 string\cf2  result = \cf1 string\cf2 .Format(\cf3 "\{0\} \{1\}!"\cf2 , first, second);\lang1033 >\lang9\par
+\cf1\f1\fs18\par
+\par
+string\cf2  first = \cf3 "Hello"\cf2 ;\par
+\cf1 string\cf2  second = \cf3 "World"\cf2 ;\par
+\cf1 string\cf2  result = \cf1 string\cf2 .Format(\cf3 "\{0\} \{1\}!"\cf2 , first, second);\par
+Console.WriteLine(result);\ul\f2\lang1033\tab\ulnone Hello World!\f1\lang9   \par
+\par
+\cf1 string\cf2  first = \cf3 "Hello"\cf2 ;\par
+\cf1 string\cf2  second = \cf3 "World"\cf2 ;\par
+Console.WriteLine(\cf3 "\{1\} \{0\}!"\cf2  , first , second);\ul\f2\lang1033\tab\ulnone Hello World!\f1\lang9\par
+Console.WriteLine(\cf3 "\{0\} \{0\} \{0\} \{0\}"\cf2 ,first , second);\ul\f2\lang1033\tab\ulnone Hello Hello Hello Hello\f1\lang9\par
+\cf0\b\f3\fs28 Formatting currency\f0\fs24\par
+\cf2\lang1033 <\{\lang9 price:\cf3 C\cf0\lang1033\}>\par
+\lang9\par
+\par
+\cf2\b0\f1\fs18 Decimal price = 12.45m;\par
+\cf1 int\cf2  discont = 50;\par
+Console.WriteLine(\cf3 $"Price: \cf2\{price:\cf3 C\cf2\}\cf3  (Save \cf2\{discont:\cf3 C\cf2\}\cf3 )"\cf2 );\ul\f2\lang1033\tab\ulnone Price: $12.45 (save $50.00)\f1\lang9   \cf0\f0\par
+\b\f3\fs28\lang1033 Formatting by rounding to the nearest .00\f0\fs24\par
+<\{measurenment:\cf5 N\cf0\}>\par
+\b0\fs20\lang9\par
+\cf1\f1\fs18 decimal\cf2  measurement = 123456.78912m;\par
+Console.WriteLine(\cf3 $"Measurement: \cf2\{measurement:\cf3 N\cf2\}\cf3  units"\cf2 );\ul\f2\lang1033\tab\ulnone Measurement: 123,456.79 units\par
+\cf0\b\f3\fs28 Rounds to the nearest .0000\f0\fs24\lang9\par
+<\{\cf2\lang1033 measurement:\cf3 N4\cf2\}>\b0\f2\fs18\par
+\par
+\cf1\f1 decimal\cf2  measurement = 123456.78912m;\par
+Console.WriteLine(\cf3 $"Measurement: \cf2\{measurement:\cf3 N4\cf2\}\cf3  units"\cf2 );\ul\f2\tab\ulnone Measurement: 123456.7891\par
+\par
+\cf0\b\f3\fs28 Formatting percentages\f0\fs24\par
+<\{\cf2 tax:\cf3 P2\cf2\}\cf0\}>\par
+\par
+\cf1\b0\f1\fs18 decimal\cf2  tax = .36785m;\par
+Console.WriteLine(\cf3 $"Tax rate: \cf2\{tax:\cf3 P2\cf2\}\cf3 "\cf2 );\ul\f2\tab\ulnone Tax rate: 36.79%\par
+\par
+\par
+\b\f3\fs28 Combining formatting approaches\f0\fs24\par
+\f2 <\f1 String.Format\f2 >\par
+\b0\fs18\par
+\cf1\f1 decimal\cf2  price = 67.55m;\par
+\cf1 decimal\cf2  salePrice = 59.99m;\par
+\par
+\cf1 string\cf2  yourDiscount = String.Format(\cf3 "You saved \{0:C2\} off the regular \{1:C2\} price. "\cf2 , (price - salePrice), price);\par
+\par
+
+\pard\fi-4680\li4680\ri-795\sl240\slmult1 Console.WriteLine(yourDiscount);\ul\f2\tab\b\fs24 Output\b0\fs18\par
+\par
+\ulnone\tab You saved $7.56 off the regular $67.55 price.\par
+\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\b\f3\fs28 Furthermore combining formatting approach\f0\fs24\par
+\par
+\cf1\b0\f1\fs18 decimal\cf2  price = 67.55m;\par
+\cf1 decimal\cf2  salePrice = 59.99m;\par
+\par
+\cf1 string\cf2  yourDiscount = String.Format(\cf3 "You saved \{0:C2\} off the regular \{1:C2\} price. "\cf2 , (price - salePrice), price);\par
+yourDiscount += \cf3 $"A discount of \cf2\{((price - salePrice) / price):\cf3 P2\cf2\}\cf3 !"\cf2 ;\par
+\par
+
+\pard\fi-4680\li4680\ri-795\sl240\slmult1 Console.WriteLine(yourDiscount);\ul\f2\tab\b\fs24 Output\par
+\ulnone\b0\tab\par
+\tab\fs18 You saved $7.56 off the regular $67.55 price. A Discount of 11.19%\par
+\par
+\par
+\cf1\f1 int\cf2  invoiceNumber = 1201;\par
+\cf1 decimal\cf2  productShares = 25.4568m;\par
+\cf1 decimal\cf2  subtotal = 2750.00m;\par
+\cf1 decimal\cf2  taxPercentage = .15825m;\par
+\cf1 decimal\cf2  total = 318.19m;\par
+\par
+Console.WriteLine(\cf3 $" Invoice Number: \cf2\{invoiceNumber\}\cf3 "\cf2 )\par
+Console.WriteLine(\cf3 $"    Shares: \cf2\{productShares:\cf3 N3\cf2\}\cf3  Product"\cf2 );\par
+Console.WriteLine(\cf3 $"        Sub Total: \cf2\{subtotal:\cf3 C\cf2\}\cf3 "\cf2 );\par
+Console.WriteLine(\cf3 $"            Tax: \cf2\{taxPercentage:\cf3 P2\cf2\}\cf3 "\cf2 );\par
+Console.WriteLine(\cf3 $"        Total Billed: \cf2\{total:\cf3 C\cf2\}\cf3 "\cf2 );\par
+\fs19\par
+\ul\b\f0\fs18\tab\fs24 Output\par
+\par
+\ulnone\tab\b0\fs18 Invoice Number: 1201\par
+\tab\tab Shares: 25.457 Product\par
+\tab\tab\tab Sub Total: $2,750.00\par
+\tab\tab\tab\tab Tax: 15.%\par
+\tab\tab\tab Total'Billed: $318.19\b\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\cf0\b0\lang9\tab\par
+
+\pard\ri-795\sl240\slmult1\b\f3\fs28 Format\b0\fs20\lang1033\par
+\cf2\f1 Dictionary<\cf1 string\cf2 , \cf1 decimal\cf2 > menu = \cf1 new\cf2  Dictionary<\cf1 string\cf2 , \cf1 decimal\cf2 >();\par
+menu.Add(\cf3 "Spagetti"\cf2 , 15.99m);\par
+menu.Add(\cf3 "Bread sticks"\cf2 , 5.99m);\par
+menu.Add(\cf3 "Ravioli"\cf2 , 17.99m);\par
+\par
+\cf4 //create menu\cf2\par
+\cf1 int\cf2  menuCount = 0;\par
+\cf1 foreach\cf2  (KeyValuePair<\cf1 string\cf2 , \cf1 decimal\cf2 > kvp \cf1 in\cf2  menu)\par
+\{\par
+    Console.WriteLine(String.Format(\cf3 "\{0,-3\} \{1,-20\} \{2,15\}"\cf2 , menuCount + \cf3 "."\cf2 , kvp.Key, kvp.Value));\par
+    menuCount++;\par
+\}\cf0\f3\par
+\par
+\b Output\par
+\b0\par
+\f0\fs22 0.  Spagetti                        15.99\par
+1.  Bread sticks                  5.99\par
+2.  Ravioli                          17.99\f3\fs20\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
