@@ -1,0 +1,519 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Cascadia Mono;}{\f2\fnil\fcharset0 Cascadia Mono;}{\f3\fnil\fcharset1 Cambria Math;}{\f4\fnil\fcharset0 Cambria Math;}{\f5\fnil Cambria Math;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red0\green128\blue0;\red163\green21\blue21;\red255\green255\blue0;}
+{\*\generator Riched20 10.0.22621}{\*\mmathPr\mmathFont3\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\qc\f0\fs44 Exception Cheat sheet\par
+
+\pard\fi-6677\li6677\sl240\slmult1\ul\b\i\fs20\lang9\par
+\par
+\ulnone\i0\fs28\par
+\par
+
+\pard\sl240\slmult1 Exception handling keywords, code blocks, and patterns\par
+\par
+\b0\fs20 Exception handling in C# is implemented by using the try, catch, and finally keywords. Each of these keywords has an associated code block and can be used to satisfy a specific goal in your approach to exception handling. For example:\b\fs28\par
+
+\pard\fi-6677\li6677\sl240\slmult1\par
+\par
+Code\fs20\tab\fs28 Console\ul\i\fs20\par
+
+\pard\sl240\slmult1\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\cf1\ulnone\b0\i0\f1\fs19\lang1033 try\cf2\par
+\{\par
+    \cf3 // try code block - code that may generate an exception\cf2\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    \cf3 // catch code block - code to handle an exception\cf2\par
+\}\par
+\cf1 finally\cf2\par
+\{\par
+    \cf3 // finally code block - code to clean up resources\cf2\par
+\}\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf0\f0\fs20\lang9\par
+
+\pard\fi-8027\li8117\ri-795\sl240\slmult1\ul\tab\tab\par
+
+\pard\ri-795\sl240\slmult1\ulnone\b\fs24 Compiler-generated exceptions\par
+\b0\fs20\par
+The .NET runtime throws exceptions when basic operations fail. Here's a short list of runtime exceptions and their error conditions:\par
+\par
+
+\pard\fi-720\li720\ri-795\sl240\slmult1\b ArrayTypeMismatchException\b0 : Thrown when an array can't store a given element because the actual type of the element is incompatible with the actual type of the array.\par
+\par
+\b DivideByZeroException\b0 : Thrown when an attempt is made to divide an integral value by zero.\par
+\par
+\b FormatException: \b0 Thrown when the format of an argument is invalid.\par
+\tab\par
+\b IndexOutOfRangeException\b0 : Thrown when an attempt is made to index an array when the index is less than zero or outside the bounds of the array.\par
+\par
+\b InvalidCastException: \b0 Thrown when an explicit conversion from a base type to an interface or to a derived type fails at runtime.\par
+\par
+\b NullReferenceException: \b0 Thrown when an attempt is made to reference an object whose value is null.\par
+\par
+\b OverflowException: \b0 Thrown when an arithmetic operation in a checked context overflows.\par
+\tab Code samples for compiler-generated exceptions\par
+\tab The following code samples show an example of the code that causes a compiler-generated exception.\par
+
+\pard\ri-795\sl240\slmult1\par
+\b ArrayTypeMismatchException\b0\par
+An exception of type ArrayTypeMismatchException is thrown when an attempt is made to store an element of the wrong type within an array. The following example throws an ArrayTypeMismatchException exception when trying to store a numeric value in a string array.\par
+\par
+C#\par
+\par
+Copy\par
+string[] names = \{ "Dog", "Cat", "Fish" \};\par
+Object[] objs = (Object[])names;\par
+\par
+Object obj = (Object)13;\par
+objs[2] = obj; // ArrayTypeMismatchException occurs\par
+\par
+\par
+\b DivideByZeroException\b0\par
+An exception of type DivideByZeroException occurs when trying to divide an integer or Decimal number by zero. The following example throws a DivideByZeroException exception when performing integer division.\par
+\par
+C#\par
+\par
+Copy\par
+int number1 = 3000;\par
+int number2 = 0;\par
+Console.WriteLine(number1 / number2); // DivideByZeroException occurs\par
+\par
+ Note\par
+\par
+\i Dividing a floating-point value by zero doesn't throw an exception; it results in positive infinity, negative infinity, or not a number (NaN), according to the rules of IEEE 754 arithmetic.\i0\par
+\par
+\b FormatException\b0\par
+An exception of type FormatException occurs when the format of an argument is invalid, or when a composite format string is not well formed. The following example throws a FormatException exception when trying to convert a string to an integer.\par
+\par
+C#\par
+\par
+Copy\par
+int valueEntered;\par
+string userValue = "two";\par
+valueEntered = int.Parse(userValue); // FormatException occurs\par
+IndexOutOfRangeException\par
+An exception of type IndexOutOfRangeException is thrown when an attempt is made to access an element of an array or collection with an index that is outside its bounds. The following example throws an IndexOutOfRangeException exception when attempting to assign the last element of the values1 array to the last element of the values2 array.\par
+\par
+C#\par
+\par
+Copy\par
+int[] values1 = \{ 3, 6, 9, 12, 15, 18, 21 \};\par
+int[] values2 = new int[6];\par
+\par
+values2[values1.Length - 1] = values1[values1.Length - 1]; // IndexOutOfRangeException occurs\par
+\par
+\b InvalidCastException\b0\par
+An exception of type InvalidCastException is thrown when attempting an invalid casting or explicit conversion. The following example throws an InvalidCastException when attempting to cast an object of type string to an int variable.\par
+\par
+C#\par
+\par
+Copy\par
+object obj = "This is a string";\par
+int num = (int)obj;\par
+\par
+\b NullReferenceException\b0\par
+An exception of type NullReferenceException is thrown when attempting to access a member on a type whose value is null. Two examples are shown. In the first example, a NullReferenceException is thrown when attempting to access an element of a null array. The second example throws a NullReferenceException when attempting to access a method of a null string.\par
+\par
+C#\par
+\par
+Copy\par
+int[] values = null;\par
+for (int i = 0; i <= 9; i++)\par
+    values[i] = i * 2;\par
+C#\par
+\par
+Copy\par
+string? lowCaseString = null;\par
+Console.WriteLine(lowCaseString.ToUpper());\par
+\par
+\b OverflowException\b0\par
+An exception of type OverflowException occurs when an arithmetic operation attempts to assign a result that's outside the range of the target data type. The following example throws an OverflowException exception when attempting to convert a decimal value of 400 to a byte variable.\par
+\par
+C#\par
+\par
+Copy\par
+decimal x = 400;\par
+byte i;\par
+\par
+i = (byte)x; // OverflowException occurs\par
+Console.WriteLine(i);\par
+Recap\par
+Here are a few important things to remember from this unit:\par
+\par
+The .NET runtime throws an exception when an operation fails.\par
+The exception type is dependent on the code that causes the exception.\par
+Your application should catch runtime exceptions.\par
+\par
+\par
+
+\pard\fi-6677\li6677\sl240\slmult1\b\fs28 Code\fs20\tab\fs28 Console\par
+\par
+Implement a simple try-catch\par
+\par
+\cf1\b0\f1\fs16 double\cf2  float1 = 3000.0;\par
+\cf1 double\cf2  float2 = 0.0;\par
+\cf1 int\cf2  number1 = 3000;\par
+\cf1 int\cf2  number2 = 0;\par
+\cf1 try\cf2\par
+\{\par
+    Console.WriteLine(float1 / float2);\ul\f2\lang1033\tab\ulnone\f3\u8734?\f1\lang9\par
+    Console.WriteLine(number1 / number2);\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has been caught"\cf2 );\ul\f2\lang1033\tab\ulnone An exception has been caught\f1\lang9\par
+\}\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\ul\f2\lang1033\tab\ulnone Exit program\cf0\b\f0\lang9\par
+\cf2\b0\f1\par
+\cf0\b\f0\fs28\par
+Catch exceptions thrown in called methods\par
+\par
+Code\par
+\fs16\par
+\cf1\b0\f1 try\cf2\par
+\{\par
+    Process1();\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has occurred"\cf2 );\par
+\}\par
+\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  Process1()\par
+\{\par
+    WriteMessage();\par
+\}\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  WriteMessage()\par
+\{\par
+    \cf1 double\cf2  float1 = 3000.0;\par
+    \cf1 double\cf2  float2 = 0.0;\par
+    \cf1 int\cf2  number1 = 3000;\par
+    \cf1 int\cf2  number2 = 0;\par
+\par
+    Console.WriteLine(float1 / float2);\par
+    Console.WriteLine(number1 / number2);\par
+\}\cf0\b\f0\par
+\ul\i\fs20\par
+
+\pard\ri-795\sl240\slmult1\ulnone\b0\i0\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\b\fs24 Output\par
+\par
+\b0\f3\fs18\u8734?\par
+An exception has occurred\par
+Exit program\par
+\par
+\ul\f4\lang1033\tab\tab\tab\tab\ulnone\f0\lang9\par
+\fs20\par
+
+\pard\ri-795\sl240\slmult1\qc\b\fs28 Catch exceptions thrown in called methods, but the Exception will faver the cosest try-catch\b0\fs20\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\b\fs24 Code\par
+\b0\fs20\par
+\cf1\f1\fs16 try\cf2\par
+\{\par
+    Process1();\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has occurred"\cf2 );\par
+\}\par
+\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  Process1()\par
+\{\par
+    \cf1 try\cf2\par
+    \{\par
+        WriteMessage();\par
+    \}\par
+    \cf1 catch\cf2\par
+    \{\par
+        Console.WriteLine(\cf4 "Exception caught in Process1"\cf2 );\par
+    \}\par
+\par
+\}\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  WriteMessage()\par
+\{\par
+    \cf1 double\cf2  float1 = 3000.0;\par
+    \cf1 double\cf2  float2 = 0.0;\par
+    \cf1 int\cf2  number1 = 3000;\par
+    \cf1 int\cf2  number2 = 0;\par
+\par
+    Console.WriteLine(float1 / float2);\par
+    Console.WriteLine(number1 / number2);\par
+\}\cf0\f0\par
+\fs20\par
+\b\fs24 Output\par
+\b0\f3\fs16\u8734?\par
+Exception caught in Process1\par
+Exit program\f0\lang9\par
+\fs20\par
+\b\fs24 Access the properties of an exception object\par
+
+\pard\ri-795\sl240\slmult1\qc {\fs16{\field{\*\fldinst{HYPERLINK https://learn.microsoft.com/en-us/training/modules/implement-exception-handling-c-sharp/7-exercise-catch-explicit-exception-types }}{\fldrslt{https://learn.microsoft.com/en-us/training/modules/implement-exception-handling-c-sharp/7-exercise-catch-explicit-exception-types\ul0\cf0}}}}\f0\fs24\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\par
+<\cf1\f1 catch\cf2  (\highlight5 Exception\highlight0  ex)\f2\lang1033 >\b0\f1\fs16\lang9\par
+\cf0\b\f0\fs24\par
+\par
+Code\par
+\cf1\b0\f1\fs16 try\cf2\par
+\{\par
+    Process1();\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has occurred"\cf2 );\par
+\}\par
+\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  Process1()\par
+\{\par
+    \cf1 try\cf2\par
+    \{\par
+        WriteMessage();\par
+    \}\par
+    \cf1 catch\cf2  (\highlight5 Exception\highlight0  ex)\par
+    \{\par
+        Console.WriteLine(\cf4 $"Exception cought in Process1: \cf2\{ex.Message\}\cf4 "\cf2 );\par
+    \}\par
+\}\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  WriteMessage()\par
+\{\par
+    \cf1 double\cf2  float1 = 3000.0;\par
+    \cf1 double\cf2  float2 = 0.0;\par
+    \cf1 int\cf2  number1 = 3000;\par
+    \cf1 int\cf2  number2 = 0;\par
+\par
+    Console.WriteLine(float1 / float2);\par
+    Console.WriteLine(number1 / number2);\par
+\}\par
+\par
+\par
+\cf0\b\f0\fs24 Output\par
+\b0\f3\fs16\u8734?\par
+Exception caught in Process1: Attempted to divide by zero.\par
+Exit program\f0\lang9\par
+\b\fs24\par
+\fs28 Catch a specific exception type\par
+\fs24\par
+\fs20 <\cf1\f1 catch\cf2  (\highlight5 DivideByZeroException\highlight0  ex)\f2\lang1033 >\b0\f1\fs16\lang9\par
+\cf0\b\f0\fs24\par
+\par
+\cf1\b0\f1\fs16 try\cf2\par
+\{\par
+    Process1();\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has occurred"\cf2 );\par
+\}\par
+\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  Process1()\par
+\{\par
+    \cf1 try\cf2\par
+    \{\par
+        WriteMessage();\par
+    \}\par
+    \cf1 catch\cf2  (\highlight5 DivideByZeroException\highlight0  ex)\par
+    \{\par
+        Console.WriteLine(\cf4 $"Exception cought in Process1: \cf2\{ex.Message\}\cf4 "\cf2 );\par
+    \}\par
+\}\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  WriteMessage()\par
+\{\par
+    \cf1 double\cf2  float1 = 3000.0;\par
+    \cf1 double\cf2  float2 = 0.0;\par
+    \cf1 int\cf2  number1 = 3000;\par
+    \cf1 int\cf2  number2 = 0;\par
+\par
+    Console.WriteLine(float1 / float2);\par
+    Console.WriteLine(number1 / number2);\par
+\}\par
+\par
+\cf0\b\f0\fs24 Output\par
+\b0\f3\fs20\u8734?\par
+Exception caught in Process1: Attempted to divide by zero.\par
+Exit program\f0\lang9\par
+\fs16\par
+\b\fs28 Catch multiple exceptions in a code block\par
+\par
+\par
+Code\par
+\par
+\cf1\b0\f1\fs16 try\cf2\par
+\{\par
+    Process1();\par
+\}\par
+\cf1 catch\cf2\par
+\{\par
+    Console.WriteLine(\cf4 "An exception has occurred"\cf2 );\par
+\}\par
+\par
+Console.WriteLine(\cf4 "Exit program"\cf2 );\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  Process1()\par
+\{\par
+    WriteMessage();\par
+\}\par
+\par
+\cf1 static\cf2  \cf1 void\cf2  WriteMessage()\par
+\{\par
+    \cf1 double\cf2  float1 = 3000.0;\par
+    \cf1 double\cf2  float2 = 0.0;\par
+    \cf1 int\cf2  number1 = 3000;\par
+    \cf1 int\cf2  number2 = 0;\par
+    \cf1 byte\cf2  smallNumber;\par
+    \cf1 try\cf2\par
+    \{\par
+        Console.WriteLine(float1 / float2);\par
+        Console.WriteLine(number1 / number2);\par
+    \}\par
+    \cf1 catch\cf2  (DivideByZeroException ex)\par
+    \{\par
+        Console.WriteLine(\cf4 $"Exception cought in Process1: \cf2\{ex.Message\}\cf4 "\cf2 );\par
+    \}\par
+    \cf1 checked\cf2\par
+    \{\par
+        smallNumber = (\cf1 byte\cf2 )number1;\par
+    \}\par
+\}\par
+\par
+\b\f2\fs28\lang1033 Output\par
+\b0\f3\fs20\u8734?\par
+Exception cought in Process1: Attempted to divide by zero.\par
+An exception has occurred\par
+Exit program\par
+\par
+\b\fs28 Catch separate exception types in a code block\par
+\par
+\cf0\f0\lang9 Code\cf2\f5\par
+\b0\f2\fs20\lang1033\par
+\cf3\f1\fs16\lang9 // inputValues is used to store numeric values entered by a user\cf2\par
+\cf1 string\cf2 [] inputValues = \cf1 new\cf2  \cf1 string\cf2 [] \{ \cf4 "three"\cf2 , \cf4 "9999999999"\cf2 , \cf4 "0"\cf2 , \cf4 "2"\cf2  \};\par
+\par
+\cf1 foreach\cf2  (\cf1 string\cf2  inputValue \cf1 in\cf2  inputValues)\par
+\{\par
+    \cf1 int\cf2  numValue = 0;\par
+    \cf1 try\cf2\par
+    \{\par
+        numValue = \cf1 int\cf2 .Parse(inputValue);\par
+    \}\par
+    \cf1 catch\cf2  (FormatException)\par
+    \{\par
+        Console.WriteLine(\cf4 "Invalid readResult. Please enter a valid number."\cf2 );\par
+    \}\par
+    \cf1 catch\cf2  (OverflowException)\par
+    \{\par
+        Console.WriteLine(\cf4 "The number you entered is too large or too small."\cf2 );\par
+    \}\par
+    \cf1 catch\cf2  (Exception ex)\par
+    \{\par
+        Console.WriteLine(ex.Message);\par
+    \}\par
+\}\par
+\par
+\b\f2\fs28\lang1033 Output\par
+\b0\fs20 Invalid readResult. Please enter a valid number.\par
+The number you entered is too large or too small.\par
+\par
+\par
+
+\pard\ri-795\sl240\slmult1\qc\b\fs28 Exercise - Complete a challenge activity to catch specific exceptions\par
+\par
+
+\pard\ri-795\sl240\slmult1 Code\par
+\par
+\cf1\b0\f1\fs16 using\cf2  System.Linq.Expressions;\par
+\cf1 for\cf2  (\cf1 int\cf2  i = 0; i < 5; i++)\par
+\{\par
+        \cf1 try\cf2\par
+        \{\par
+            proses(i);\par
+        \}\par
+\par
+        \cf1 catch\cf2  (OverflowException ex)\par
+        \{\par
+            Console.WriteLine(\cf4 "Error: The number is too large to be represented as an integer."\cf2  + ex.Message);\par
+        \}\par
+        \cf1 catch\cf2  (NullReferenceException ex)\par
+        \{\par
+            Console.WriteLine(\cf4 "Error: The reference is null."\cf2  + ex.Message);\par
+        \}\par
+        \cf1 catch\cf2  (IndexOutOfRangeException ex)\par
+        \{\par
+            Console.WriteLine(\cf4 "Error: Index out of range."\cf2  + ex.Message);\par
+        \}\par
+        \cf1 catch\cf2  (DivideByZeroException ex)\par
+        \{\par
+            Console.WriteLine(\cf4 "Error: Cannot divide by zero."\cf2  + ex.Message);\par
+        \}\par
+\}\par
+Console.WriteLine(\cf4 "Exiting program."\cf2 );\par
+\cf1 void\cf2  proses(\cf1 int\cf2  i)\par
+\{\par
+    \cf1 switch\cf2 (i)\par
+        \{ \par
+        \cf1 case\cf2  1:\par
+            \cf1 checked\cf2\par
+            \{\par
+                \cf1 int\cf2  num1 = \cf1 int\cf2 .MaxValue;\par
+                \cf1 int\cf2  num2 = \cf1 int\cf2 .MaxValue;\par
+                \cf1 int\cf2  result = num1 + num2;\par
+                Console.WriteLine(\cf4 "Result: "\cf2  + result);\par
+            \}\par
+            \cf1 break\cf2 ;\par
+\par
+        \cf1 case\cf2  2:\par
+            \cf1 string\cf2  str = \cf1 null\cf2 ;\par
+            \cf1 int\cf2  length = str.Length;\par
+            Console.WriteLine(\cf4 "String Length: "\cf2  + length);\par
+            \cf1 break\cf2 ;\par
+        \cf1 case\cf2  3:\par
+            \cf1 int\cf2 [] numbers = \cf1 new\cf2  \cf1 int\cf2 [5];\par
+            numbers[5] = 10;\par
+            Console.WriteLine(\cf4 "Number at index 5: "\cf2  + numbers[5]);\par
+            \cf1 break\cf2 ;\par
+        \cf1 case\cf2  4:\par
+            \cf1 int\cf2  num3 = 10;\par
+            \cf1 int\cf2  num4 = 0;\par
+            \cf1 int\cf2  result2 = num3 / num4;\par
+            Console.WriteLine(\cf4 "Result: "\cf2  + result2);\par
+            \cf1 break\cf2 ;\par
+        \}\par
+\}\par
+\par
+\b\f2\fs28 Output\par
+\b0\fs20 Error: The number is too large to be represented as an integer. Arithmetic operation resulted in an overflow.\par
+Error: The reference is null. Object reference not set to an instance of an object.\par
+Error: Index out of range. Index was outside the bounds of the array.\par
+Error: Cannot divide by zero. Attempted to divide by zero.\par
+Exiting program.\f1\par
+\fs16\par
+\par
+\par
+\par
+\par
+\cf0\f0\lang9\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\ul\b\i\fs20\lang1033\par
+}
+ 

@@ -1,0 +1,282 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red255\green255\blue0;\red0\green77\blue187;\red0\green255\blue255;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\qc\f0\fs44 Debug Cheat sheet\fs18\par
+{{\field{\*\fldinst{HYPERLINK https://learn.microsoft.com/en-us/training/modules/implement-visual-studio-code-debugging-tools/3-exercise-run-code-debug-environment }}{\fldrslt{https://learn.microsoft.com/en-us/training/modules/implement-visual-studio-code-debugging-tools/3-exercise-run-code-debug-environment\ul0\cf0}}}}\f0\fs44\par
+
+\pard\fi-6677\li6677\sl240\slmult1\ul\b\i\fs20\lang9\par
+\par
+\ulnone\i0\fs28 How to \lang1033 Creates a new project and set up debugger\par
+\par
+
+\pard\sl240\slmult1\fs24 Create a new code project\par
+\fs16\par
+The first step in learning the debugger tools is creating a code project that you can run in the debugger.\par
+\par
+1\tab Open a new instance of Visual Studio Code.\par
+\par
+2\tab On the File menu, select \highlight2 Open Folder\highlight0 .\par
+\par
+3\tab On the Open Folder dialog, navigate to your Windows Desktop folder.\par
+\par
+4\tab On the Open Folder dialog, select \highlight2 New folder\highlight0 .\par
+\par
+5\tab Name the new folder \highlight2 Debug101\highlight0 , and then select Select Folder.\par
+\par
+6\tab On the Terminal menu, select New Terminal.\par
+\par
+\tab A .NET CLI command can be used to create a new console app.\par
+\par
+7\tab At the TERMINAL panel command prompt, enter the following command:\par
+\par
+.NET CLI\par
+\par
+\cf3\highlight2\i dotnet new \cf0 console\highlight0\par
+\b0\i0\par
+8\tab Close the TERMINAL panel.\par
+\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\par
+
+\pard\sl240\slmult1\qc\ulnone\b\fs24 Examine launch configurations for debugging\par
+\par
+\ul\b0\fs16\par
+
+\pard\sl240\slmult1\ulnone 1\tab Open the \highlight2 Run menu\highlight0 .\par
+\par
+
+\pard\fi-707\li707\sl240\slmult1 2\tab Notice that the Run menu provides access to several debug options, including a menu option named Add Configuration.The Open Configuration menu option is currently disabled because you haven't added a launch configuration file to your project.\par
+
+\pard\sl240\slmult1\par
+
+\pard\fi-707\li707\sl240\slmult1 3\tab On the Run menu, select \highlight2 Add Configuration\highlight0 .\par
+\par
+4\tab To choose the debugger option for your console app, select \highlight2 .NET 5+ and .NET Core.\par
+\highlight0\par
+\tab If you see a message stating that a .NET debug configuration cannot be created, you can ignore it. The message will disappear after a short time and you will see a button labeled Add Configuration.\par
+\par
+5\tab Select the \highlight2 Add Configuration button\highlight0 , and then select \highlight2\{\} .NET: Launch .NET Core Console App\highlight0 .\par
+\par
+6\tab For the program: attribute, replace <target-framework> with \highlight2 net7.0 \highlight0 and replace <project-name.dll> with \highlight2 Debug101.dll\highlight0 .\par
+\par
+\tab\highlight4 note: \highlight2 Debug101.dll \highlight4 is the name of the file that contans the program.\par
+\highlight0\par
+\tab Notice that the program attribute now specifies the path to the executable version of your Debug101 application.\par
+\par
+JSON\par
+\par
+\i "program": "$\{workspaceFolder\}/bin/Debug/\highlight2 net7.0\highlight0 /\highlight2 Debug101.dll\highlight0 ",\i0\par
+\par
+\tab Connecting your application with the debugger is one of the primary goals of a configuration.\par
+\par
+7\tab On the File menu, select Save.\par
+\par
+8\tab Notice the new .vscode folder that has been added to your project folder.\par
+\tab The .vscode folder contains files that are used to configure the debug environment.\par
+\par
+9\tab Take a minute to examine the launch.json file.\par
+\par
+\tab The launch configurations file can include multiple configurations. Each configuration includes a collection of attributes that are used to define that configuration.\par
+\par
+10\tab Notice that the prelaunchTask attribute specifies a build task.\par
+\par
+11\tab On the View menu, select Command Palette.\par
+\par
+12\tab At the Command Palette prompt, type task to filter the list of commands.\par
+\par
+13\tab Select Tasks: Configure Default Build Task, select Create tasks.json file from template, and then select .NET Core.\par
+\par
+14\tab Close the launch.json and tasks.json files.\par
+
+\pard\sl240\slmult1\b\i\par
+\i0\fs28\lang9\par
+
+\pard\fi-6677\li6677\sl240\slmult1\par
+\par
+\par
+\par
+Code\fs20\tab\fs28\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\b0\fs20\lang1033\{\par
+    // Use IntelliSense to learn about possible attributes.\par
+    // Hover to view descriptions of existing attributes.\par
+    // For more information, visit: {{\field{\*\fldinst{HYPERLINK https://go.microsoft.com/fwlink/?linkid=830387 }}{\fldrslt{https://go.microsoft.com/fwlink/?linkid=830387\ul0\cf0}}}}\f0\fs20\par
+    "version": "0.2.0",\par
+    "configurations": [\par
+        \{\par
+            "name": ".NET Core Launch (console)",\par
+            "type": "coreclr",\par
+            "request": "launch",\par
+            "preLaunchTask": "build",\par
+            "program": "$\{workspaceFolder\}/bin/Debug/net7.0/Debug101.dll",\par
+            "args": [],\par
+            "cwd": "$\{workspaceFolder\}",\par
+            "stopAtEntry": false,\par
+            "console": "internalConsole"\par
+        \},\par
+        \{\par
+            "name": ".NET Core Launch (console)",\par
+            "type": "coreclr",\par
+            "request": "launch",\par
+            "preLaunchTask": "build",\par
+            "program": "$\{workspaceFolder\}/bin/Debug/net7.0/Debug101.dll",\par
+            "args": [],\par
+            "cwd": "$\{workspaceFolder\}",\par
+            "console": "internalConsole",\par
+            "stopAtEntry": false\par
+        \},\par
+        \{\par
+            "name": ".NET Core Attach",\par
+            "type": "coreclr",\par
+            "request": "attach"\par
+        \}\par
+    ]\par
+\}\lang9\par
+\par
+\par
+
+\pard\fi-360\li360\ri-795\sl240\slmult1 Name\par
+The name attribute specifies the display name for the launch configuration. The value assigned to name appears in the launch configurations dropdown (on the controls panel at the top of the RUN AND DEBUG view).\par
+\par
+Type\par
+The type attribute specifies the type of debugger to use for the launch configuration. A value of codeclr specifies the debugger type for .NET 5+ and .NET Core applications (including C# applications).\par
+\par
+Request\par
+The request attribute specifies the request type for the launch configuration. Currently, the values launch and attach are supported.\par
+\par
+PreLaunchTask\par
+The preLaunchTask attribute specifies a task to run before debugging your program. The task itself can be found in the tasks.json file, which is in the .vscode folder along with the launch.json file. Specifying a prelaunch task of build runs a dotnet build command before launching the application.\par
+\par
+Program\par
+The program attribute is set to the path of the application dll or .NET Core host executable to launch.\par
+\par
+This property normally takes the form: $\{workspaceFolder\}/bin/Debug/<target-framework>/<project-name.dll>.\par
+\par
+Where:\par
+\par
+<target-framework> is the framework that the debug project is being built for. This value is normally found in the project file as the 'TargetFramework' property.\par
+<project-name.dll> is the name of debugged project's build output dll. This property is normally the same as the project file name but with a '.dll' extension.\par
+For example: $\{workspaceFolder\}/bin/Debug/net7.0/Debug101.dll\par
+\par
+ Note\par
+\par
+The .dll extension indicates that this file is a dynamic link library (dll) file. If your project is named Debug101, a file named Debug101.dll is created when a build task compiles your program using the Program.cs and Debug101.csproj files. You can find the Debug101.dll file in the EXPLORER view by expanding the "bin" and "Debug" folders, and then opening a folder that represents the .NET framework used by your code project, such as "net7.0". The .NET Framework version is specified in your .csproj file.\par
+\par
+Cwd\par
+The cwd attribute specifies the working directory of the target process.\par
+\par
+Args\par
+The args attribute specifies the arguments that are passed to your program at launch. There are no arguments by default.\par
+\par
+Console\par
+The console attribute specifies the type of console that's used when the application is launched. The options are internalConsole, integratedTerminal, and externalTerminal. The default setting is internalConsole. The console types are defined as:\par
+\par
+The internalConsole setting corresponds to the DEBUG CONSOLE panel in the Panels area below the Visual Studio Code Editor.\par
+The integratedTerminal setting corresponds to the OUTPUT panel in the Panels area below the Visual Studio Code Editor.\par
+The externalTerminal setting corresponds to an external terminal window. The Command Prompt application that comes with Windows is an example of a terminal window.\par
+ Important\par
+\par
+The DEBUG CONSOLE panel doesn't support console input. For example, the DEBUG CONSOLE can't be used if the application includes a Console.ReadLine() statement. When you're working on a C# console application that reads user input, the console setting must be set to either integratedTerminal or externalTerminal. Console applications that write to the console, but don't read input from the console, can use any of the three console settings.\par
+\par
+Stop at Entry\par
+If you need to stop at the entry point of the target, you can optionally set stopAtEntry to be true.\par
+\par
+Edit a launch configuration\par
+There are lots of scenarios when you might need to customize the launch configuration file. Many of those scenarios involve advanced or complex project scenarios. This module focuses on two simple scenarios when updating the launch configuration file is required:\par
+\par
+Your C# console application reads input from the console.\par
+Your project workspace includes more than one application.\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\par
+\ul\b\fs28\tab\tab\tab\tab\par
+\par
+\ulnone Update the launch configuration to accommodate multiple applications\par
+
+\pard\fi-360\li360\ri-795\sl240\slmult1\b0\fs20 If your workspace has only one launchable project, the C# extension will automatically generate the launch.json file. If you have more than one launchable project, then you need to modify your launch.json file manually. Visual Studio Code generates a launch.json file using the basic template that you can update. In this scenario, you create separate configurations for each application that you want to debug. Prelaunch tasks, such as a build task, can be created in the tasks.json file.\par
+\par
+Suppose that you're working on a coding project that includes several console applications. The root project folder, SpecialProjects, is the workspace folder that you open in Visual Studio Code when you work on your code. You have two applications that you're developing, Project123 and Project456. You use the RUN AND DEBUG view to debug the applications. You want to select the application that you're debugging from the user interface. You also want any saved code updates to be compiled prior to attaching the debugger to your application.\par
+\par
+You can achieve the requirements for this scenario by updating the launch.json and tasks.json files.\par
+\par
+Notice that the .vscode folder containing the launch.json and tasks.json files is associated with the workspace folder, SpecialProjects, not the individual project folders.\par
+\par
+The following screenshot shows how you could configure the launch.json file to include configurations for both the "Project123" and "Project456" applications.\par
+\par
+\par
+\ul JSON\par
+\ulnone\par
+\par
+"version": "0.2.0",\par
+"configurations": [\par
+    \{\par
+        "name": "Launch Project123",\par
+        "type": "coreclr",\par
+        "request": "launch",\par
+        "preLaunchTask": "buildProject123",\par
+        "program": "$\{workspaceFolder\}/Project123/bin/Debug/net7.0/Project123.dll",\par
+        "args": [],\par
+        "cwd": "$\{workspaceFolder\}/Project123",\par
+        "console": "internalConsole",\par
+        "stopAtEntry": false\par
+    \},\par
+    \{\par
+        "name": "Launch Project456",\par
+        "type": "coreclr",\par
+        "request": "launch",\par
+        "preLaunchTask": "buildProject456",\par
+        "program": "$\{workspaceFolder\}/Project456/bin/Debug/net7.0/Project456.dll",\par
+        "args": [],\par
+        "cwd": "$\{workspaceFolder\}/Project456",\par
+        "console": "internalConsole",\par
+        "stopAtEntry": false\par
+    \}\par
+]\par
+\par
+Notice that the name, preLaunchTask, and program fields are all configured for a specific application.\par
+\par
+The name attribute specifies the selectable launch option that's displayed in the RUN AND DEBUG view user interface, the program attribute specifies the path to your application. The preLaunchTask attribute is used to specify the name of the task that's performed prior to launching the debugger. The tasks.json file contains the named tasks and the information required to complete the task.\par
+\par
+The following screenshot shows how you could configure the tasks.json file. In this case, the named tasks specify build operations that are specific to the "Project123" and "Project456" applications. The build task ensures that any saved edits are compiled and represented in the corresponding .dll file that's attached to the debugger.\par
+\par
+\ul JSON\par
+\ulnone\par
+"version": "2.0.0",\par
+"tasks": [\par
+    \{\par
+        "label": "buildProject123",\par
+        "command": "dotnet",\par
+        "type": "process",\par
+        "args": [\par
+            "build",\par
+            "$\{workspaceFolder\}/Project123/Project123.csproj",\par
+            "/property:GenerateFullPaths=true",\par
+            "/consoleloggerparameters:NoSummary"\par
+        ],\par
+        "problemMatcher": "$msCompile"\par
+    \},\par
+    \{\par
+        "label": "buildProject456",\par
+        "command": "dotnet",\par
+        "type": "process",\par
+        "args": [\par
+            "build",\par
+            "$\{workspaceFolder\}/Project456/Project456.csproj",\par
+            "/property:GenerateFullPaths=true",\par
+            "/consoleloggerparameters:NoSummary"\par
+        ],\par
+        "problemMatcher": "$msCompile"\par
+    \}\par
+]\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

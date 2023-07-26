@@ -1,0 +1,507 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Cascadia Mono;}{\f2\fnil\fcharset0 Cascadia Mono;}}
+{\colortbl ;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red0\green128\blue0;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\qc\f0\fs44 Metheds Cheat sheet\par
+
+\pard\fi-6677\li6677\sl240\slmult1\ul\b\i\fs20\lang9\par
+\par
+\ulnone\i0\fs28 Code\fs20\tab\fs28 Console\ul\i\fs20\par
+
+\pard\sl240\slmult1\par
+
+\pard\fi-6677\li6677\ri-795\sl240\slmult1\cf1\ulnone\b0\i0\f1\fs19\lang1033 Console.Clear();\par
+Console.WriteLine(\cf2 "Generating random numbers:"\cf1 );\par
+DisplayRandomNumbers();\par
+\par
+\cf3 void\cf1  DisplayRandomNumbers()\par
+\{\par
+    Random random = \cf3 new\cf1  Random();\par
+    \cf3 for\cf1  (\cf3 int\cf1  i = 0; i < 5; i++) \par
+    \{\par
+        Console.Write(\cf2 $"\cf1\{random.Next(1,100)\}\cf2  "\cf1 );\par
+    \}\par
+    Console.WriteLine();\par
+\}\cf0\f0\fs20\lang9\par
+\par
+
+\pard\ri-795\sl240\slmult1\lang1033\par
+\par
+\b Output\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\ulnone\par
+\par
+\par
+\fs24 Code\par
+\f2 <\cf3\f1 return\cf1 ;\f2 >\ul\tab\tab\fs16 Stops running the code in the method and returns to the main program.\cf0\ulnone\f0\fs24\par
+\cf1\f2 <\f1 StringSplitOptions.RemoveEmptyEntries\f2 >\ul\fs16\tab Takes white spaces out of the array.\cf0\ulnone\f0\fs24\par
+\b0\fs20\par
+\cf3\f1\fs16 string\cf1  ipv4Input = \cf2 "107.31.1.5"\cf1 ;\par
+\cf3 bool\cf1  validRange = \cf3 false\cf1 ;\par
+\par
+    ValidateRange();\par
+\par
+    \cf3 if\cf1  (validRange)\par
+    \{\par
+        Console.WriteLine(\cf2 $"ip is a valid Ipv4 address"\cf1 );\par
+    \}\par
+    \cf3 else\cf1\par
+    \{\par
+        Console.WriteLine(\cf2 $"ip is an invalid Ipv4 address"\cf1 );\par
+    \}\par
+\par
+\cf3 void\cf1  ValidateRange() \par
+\{\par
+    \cf3 string\cf1 [] address = ipv4Input.Split(\cf2 "."\cf1 , StringSplitOptions.RemoveEmptyEntries);\par
+    \cf3 foreach\cf1  (\cf3 string\cf1  number \cf3 in\cf1  address)\par
+    \{\par
+        \cf3 if\cf1  (\cf3 int\cf1 .Parse(number) > 255)\par
+        \{\par
+            validRange = \cf3 false\cf1 ;\par
+            \cf3 return\cf1 ;\par
+        \}\par
+    \}\par
+    validRange = \cf3 true\cf1 ;\par
+\}\par
+\fs19\par
+\b\f2\fs24 Output\par
+\par
+\cf0\b0\f0\fs20 ip is a valid Ip\par
+\par
+\par
+\ul\b\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\ulnone Methods calling other methods\ul\par
+\ulnone\f2\fs24 Code\ul\fs20\par
+\cf1\ulnone\b0\f1\fs16 Console.Clear();\par
+\par
+\cf3 double\cf1  pi = 3.14159;\par
+PrintCircleInfo(12);\par
+PrintCircleInfo(24);\par
+\par
+\cf3 void\cf1  PrintCircleInfo(\cf3 int\cf1  radius)\par
+\{\par
+    Console.WriteLine(\cf2 $"CircleWith radius \cf1\{radius\}\cf2 "\cf1 );\par
+    PrintCircleArea(radius);\par
+    PrintCircleCircumference(radius);\par
+\}\par
+\par
+\par
+\par
+\cf3 void\cf1  PrintCircleArea(\cf3 int\cf1  radius)\par
+\{\par
+   \par
+    \cf3 double\cf1  area = pi * (radius * radius);\par
+    Console.WriteLine(\cf2 $"Area = \cf1\{area\}\cf2 "\cf1 );\par
+\}\par
+\cf3 void\cf1  PrintCircleCircumference(\cf3 int\cf1  radius)\par
+\{\par
+    \par
+    \cf3 double\cf1  circumference = 2 * pi * radius;\par
+    Console.WriteLine(\cf2 $"Circumference = \cf1\{circumference\}\cf2 "\cf1 );\par
+\}\cf0\ul\b\f0\par
+\cf1\ulnone\f2\fs24 Output\par
+\cf0\ul\f0\fs20\par
+\ulnone\b0\fs18 Circlewith radius 12\par
+Area = 452.38896\par
+Circumference=75.3981599999999\par
+CircleWith radius 24\par
+Area = 1809.55584\par
+Circumference=150,7963199\par
+\ul\b\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\ulnone\fs24 If the method defines a variable it won't affect the global variable.\ul\par
+Code\par
+\cf3\ulnone\b0\f1\fs16 int\cf1  a = 3;\par
+\cf3 int\cf1  b = 4;\par
+\cf3 int\cf1  c = 0;\par
+\par
+Multiply(a, b, c);\par
+Console.WriteLine(\cf2 $"global statement: \cf1\{a\}\cf2  x \cf1\{b\}\cf2  = \cf1\{c\}\cf2 "\cf1 );\par
+\par
+\cf3 void\cf1  Multiply(\cf3 int\cf1  a, \cf3 int\cf1  b, \cf3 int\cf1  c)\par
+\{\par
+    c = a * b;\par
+    Console.WriteLine(\cf2 $"inside Multiply method: \cf1\{a\}\cf2  x \cf1\{b\}\cf2  = \cf1\{c\}\cf2 "\cf1 );\par
+\}\cf0\ul\b\f0\par
+\fs24 Output\par
+\fs18\par
+\ulnone\b0 inside Multiply method: 3 x 4 = 12\par
+global statemnt: 3 x 4 = 0\ul\b\par
+\par
+\ulnone\fs24 But if the method does not define the variable the method can change the global variable \par
+\par
+Code\ul\fs18\par
+\cf3\ulnone\b0\f1\fs16 int\cf1  a = 3;\par
+\cf3 int\cf1  b = 4;\par
+\cf3 int\cf1  c = 0;\par
+\par
+Multiply(a, b);\par
+\par
+Console.WriteLine(\cf2 $"global statement: \cf1\{a\}\cf2  x \cf1\{b\}\cf2  = \cf1\{c\}\cf2 "\cf1 );\par
+\par
+\cf3 void\cf1  Multiply(\cf3 int\cf1  a, \cf3 int\cf1  b)\f2  \cf4\f1 //Notice that sea is not Declared\cf1\par
+\{\par
+    c = a * b;\par
+    Console.WriteLine(\cf2 $"inside Multiply method: \cf1\{a\}\cf2  x \cf1\{b\}\cf2  = \cf1\{c\}\cf2 "\cf1 );\par
+\}\par
+\b\fs24\par
+\f2 Output\par
+\par
+\b0\fs20 inside Multiply 3 X 4 =12\par
+global statemnt: 3 X 4 = 12\cf0\ul\f0\par
+\b\fs18\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\ulnone\fs24 Int Arrys will redefine global, Inside of methods\par
+\i (Regardless Other being declared inside the method)\i0\par
+\b0\fs18\par
+\b\f2\fs24 Code\par
+\par
+\cf3\b0\f1\fs16 int\cf1 [] array = \{ 1, 2, 3, 4, 5 \};\par
+PrintArray(array);\par
+Clear(array);\par
+PrintArray(array);\par
+\par
+\par
+\par
+\cf3 void\cf1  PrintArray(\cf3 int\cf1 [] array)\par
+\{\par
+    \cf3 foreach\cf1  (\cf3 int\cf1  a \cf3 in\cf1  array)\par
+    \{\par
+        Console.Write(\cf2 $"\cf1\{a\}\cf2  "\cf1 );\par
+    \}\par
+\}\par
+\par
+\cf3 void\cf1  Clear(\cf3 int\cf1 [] arry)\par
+\{\par
+    \cf3 for\cf1  (\cf3 int\cf1  i = 0; i < array.Length; i++)\par
+    \{\par
+        array[i] = 0;\par
+    \}\par
+\}\cf0\b\f2\par
+\fs24\par
+\cf1 Output\par
+\cf0\b0\f0\fs16 1 2 3 4 5 0 0 0 0 0 \par
+\ul\b\fs24\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\ulnone String will not redefine the global Variable inside a method\par
+\i (If the variable is declared in the method)\ul\par
+\i0\par
+\ulnone Code\par
+\cf3\b0\f1\fs19 string\cf1  status = \cf2 "Healthey"\cf1 ;\par
+\par
+Console.WriteLine(\cf2 $"Start: \cf1\{status\}\cf2 "\cf1 );\par
+SetHealth(status, \cf3 false\cf1 );\par
+Console.WriteLine(\cf2 $"End: \cf1\{status\}\cf2 "\cf1 );\par
+\par
+\cf3 void\cf1  SetHealth (\cf3 string\cf1  status, \cf3 bool\cf1  isHealthy)\par
+\{\par
+    status = (isHealthy ? \cf2 "healthy"\cf1  : \cf2 "Unhealthty"\cf1 );\par
+    Console.WriteLine(\cf2 $"Middle: \cf1\{status\}\cf2 "\cf1 );\par
+\}\par
+\cf0\b\f0\fs24\par
+Output \par
+\b0\fs20 Start: Healthy\par
+Middle: Unhealthy\par
+End: Healthy\par
+\ul\b\fs24\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\ulnone String will Redefine the global Variable inside the method\par
+\i (As long as the variable isn't declared inside the method)\i0\par
+\par
+Code\par
+\cf3\b0\f1\fs16 string\cf1  status = \cf2 "Healthey"\cf1 ;\par
+\par
+Console.WriteLine(\cf2 $"Start: \cf1\{status\}\cf2 "\cf1 );\par
+SetHealth(\cf3 false\cf1 );\par
+Console.WriteLine(\cf2 $"End: \cf1\{status\}\cf2 "\cf1 );\par
+\par
+\cf3 void\cf1  SetHealth (\cf3 bool\cf1  isHealthy)\par
+\{\par
+    status = (isHealthy ? \cf2 "healthy"\cf1  : \cf2 "Unhealthty"\cf1 );\par
+    Console.WriteLine(\cf2 $"Middle: \cf1\{status\}\cf2 "\cf1 );\par
+\}\par
+\cf0\b\f0\par
+\fs24 Output \par
+\b0\fs20 Start: Healthy\par
+Middle: Unhealthy\par
+End: Unhealthy\par
+\ul\b\fs24\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+
+\pard\fi-6660\li6660\ri-795\sl240\slmult1\ulnone\fs28 Using methods as a return variable\par
+\fs24\par
+Return \ul syntax\ulnone  from methods\par
+\par
+Code\par
+\cf3\b0\f1\fs16 double\cf1  total = 0;\par
+\cf3 double\cf1  minimumSpend = 30.00;\par
+\par
+\cf3 double\cf1 [] items = \{ 15.97, 3.50, 12.25, 22.99, 10.98 \};\par
+\cf3 double\cf1 [] discount = \{ 0.30, 0.0, 0.10, 0.20, 0.50 \};\par
+\par
+\cf3 for\cf1  (\cf3 int\cf1  i= 0; i < items.Length; i++)\par
+\{\par
+    total += GetDiscountedPrice(i);\par
+\}\par
+\cf3 if\cf1  (TotalMeetsMinimum()) \cf4 //total -= TotalMeetsMinimum() ? 5.00 : 0.00;\cf1\par
+\{\par
+    total -= 5.00;\par
+\}\par
+Console.WriteLine(\cf2 $"total: $\cf1\{FormatDecimal(total)\}\cf2 "\cf1 );\par
+\par
+\cf3 double\cf1  GetDiscountedPrice(\cf3 int\cf1  itemIndex)\par
+\{\par
+    \cf4 // Calculate the discounted price of the item\cf1\par
+    \cf3 return\cf1  items[itemIndex] * (1 - discount[itemIndex]);\par
+\}\par
+\par
+\cf3 bool\cf1  TotalMeetsMinimum()\par
+\{\par
+    \cf4 //check if the total meets the minimum\cf1\par
+    \cf3 return\cf1  total >= minimumSpend;\par
+\}\par
+\cf3 string\cf1  FormatDecimal(\cf3 double\cf1  input)\par
+\{\par
+    \cf4 //format the double so only 2 deimal places are displayed\cf1\par
+    \cf3 return\cf1  input.ToString().Substring(0, 5);\par
+
+\pard\ri-795\sl240\slmult1\}\par
+\par
+\cf0\f0\par
+\b\fs24 Output\b0\par
+total: $44.58\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\ulnone\par
+\b Return \ul numbers\ulnone  from methods\par
+\par
+\par
+Input\par
+\cf1\b0\f1\fs16 Console.Clear();\par
+\cf3 double\cf1  usd = 23.73;\par
+\cf3 int\cf1  vnd = UsdToVnd(usd);\par
+\par
+Console.WriteLine(\cf2 $"$\cf1\{usd\}\cf2  USD = $\cf1\{vnd\}\cf2  VND"\cf1 );\par
+Console.WriteLine(\cf2 $"$\cf1\{vnd\}\cf2  VND = $\cf1\{VndToUsd(vnd)\}\cf2 "\cf1 );\par
+\cf3 int\cf1  UsdToVnd(\cf3 double\cf1  usd)\par
+\{\par
+    \cf3 int\cf1  rate = 23500;\par
+    \cf3 return\cf1  (\cf3 int\cf1 )(rate * usd);\par
+\}\par
+\cf3 double\cf1  VndToUsd(\cf3 int\cf1  vnd)\par
+\{\par
+    \cf3 double\cf1  rate = 23500;\par
+    \cf3 return\cf1  vnd / rate;\par
+\}\cf0\f0\par
+\fs24\par
+\b Output\par
+\par
+\b0\fs20 $23.73 USD = $557655 VND\par
+5577655 VND = $23.73 USD\par
+\fs24\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\par
+\ulnone\b Return \ul strings\ulnone  from methods\ul\b0\par
+\ulnone\par
+\cf1\f1\fs16 Console.Clear();\par
+\cf3 string\cf1  input = \cf2 "there are snakes at the zoo"\cf1 ;\par
+Console.WriteLine(input);\par
+Console.WriteLine(ReverseSentence(input));\par
+\par
+\cf3 string\cf1  ReversWord(String word)\par
+\{\par
+    \cf3 string\cf1  result = \cf2 ""\cf1 ;\par
+    \cf3 for\cf1  (\cf3 int\cf1  i = word.Length-1; i >= 0; i--)\par
+    \{\par
+        result += word[i];\par
+    \}\par
+\par
+    \cf3 return\cf1  result;\par
+\}\par
+\cf3 string\cf1  ReverseSentence(\cf3 string\cf1  input)\par
+\{\par
+    \cf3 string\cf1  result = \cf2 ""\cf1 ;\par
+    \cf3 string\cf1 [] words = input.Split(\cf2 " "\cf1 );\par
+\par
+    \cf3 foreach\cf1  (\cf3 string\cf1  word \cf3 in\cf1  words)\par
+    \{\par
+        result += ReversWord(word) +\cf2 " "\cf1 ;\par
+    \}\par
+    \cf3 return\cf1  result.Trim();\par
+\}\cf0\f0\par
+\fs24\par
+\b Output\par
+\par
+\b0\fs20 there are snakes at the zoo\par
+ereht era sekans ta eht ooz\par
+\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\par
+\ulnone\b\fs24 Return \ul Booleans\ulnone  from methods\par
+\par
+\cf1\b0\f1\fs16 Console.Clear();\par
+\cf3 string\cf1 [] words = \{\cf2 "racecar"\cf1 ,\cf2 "talented"\cf1 ,\cf2 "deified"\cf1 ,\cf2 "tent"\cf1 ,\cf2 "tenet"\cf1\};\par
+\par
+Console.WriteLine(\cf2 "is it a Palindrome?"\cf1 );\par
+\cf3 foreach\cf1  (\cf3 string\cf1  word \cf3 in\cf1  words)\par
+\{\par
+    Console.WriteLine(\cf2 $"\cf1\{word\}\cf2 : \cf1\{IsPalindrome(word)\}\cf2 "\cf1 );\par
+\}\par
+\par
+\cf3 bool\cf1  IsPalindrome(\cf3 string\cf1  word)\par
+\{\par
+    \cf3 int\cf1  start = 0;\par
+    \cf3 int\cf1  end = word.Length - 1;\par
+\par
+    \cf3 while\cf1  (start < end)\par
+    \{\par
+        \cf3 if\cf1  (word[start] != word[end])\par
+        \{\par
+            \cf3 return\cf1  \cf3 false\cf1 ;\par
+        \}\par
+        start++;\par
+        end--;\par
+    \}\par
+    \cf3 return\cf1  \cf3 true\cf1 ;\par
+\}\cf0\b\f0\par
+\fs24\par
+Output\par
+\par
+\b0\fs20 is it a Palindrome?\par
+racecar: True\par
+talented: False\par
+deified: True\par
+tent: False\par
+Tenet: True\par
+\ul\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\par
+\ulnone\b\fs24 Return \ul Arrays\ulnone  from methods\par
+\par
+Code\fs16\par
+\par
+\cf1\b0\f1 Console.Clear();\par
+\cf3 int\cf1  target = 30;\par
+\cf3 int\cf1 [] coins = \cf3 new\cf1  \cf3 int\cf1 [] \{ 5, 5, 50, 25, 25, 10, 5 \};\par
+\par
+\cf3 int\cf1 [,] result = TwoCoins(coins, target);\par
+\par
+\par
+\cf3 if\cf1  (result.Length == 0)\par
+\{\par
+    Console.WriteLine(\cf2 "No two coins make Change"\cf1 );\par
+\}\par
+\cf3 else\cf1\par
+\{\par
+    Console.WriteLine(\cf2 "Change found at positions "\cf1 );\par
+    \cf3 for\cf1  (\cf3 int\cf1  i =0;i<result.GetLength(0);i++)\par
+    \{\par
+        \cf3 if\cf1  (result[i,0] == -1)\par
+        \{\par
+            \cf3 break\cf1 ;\par
+        \}\par
+        Console.WriteLine(\cf2 $"\cf1\{result[i, 0]\}\cf2 ,\cf1\{result[i, 1]\}\cf2 "\cf1 );\par
+    \}\par
+    \par
+\}\par
+\par
+\par
+\par
+\cf3 int\cf1 [,] TwoCoins(\cf3 int\cf1 [] coins, \cf3 int\cf1  target)\par
+\{\par
+    \cf3 int\cf1 [,] result = \{ \{ -1, -1 \}, \{ -1, -1 \}, \{ -1, -1 \}, \{ -1, -1 \}, \{ -1, -1 \} \};\par
+    \cf3 int\cf1  Count = 0;\par
+\par
+    \cf3 for\cf1  (\cf3 int\cf1  Curr = 0; Curr < coins.Length; Curr++)\par
+    \{\par
+        \cf3 for\cf1  (\cf3 int\cf1  next = Curr + 1; next < coins.Length; next++)\par
+        \{\par
+            \cf3 if\cf1  (coins[Curr] + coins[next] == target)\par
+            \{\par
+                result[Count, 0] = Curr;\par
+                result[Count, 1] = next;\par
+                Count++;\par
+            \}\par
+            \cf3 if\cf1  (Count == result.GetLength(0))\par
+            \{\par
+                \cf3 return\cf1  result;\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    \cf3 return\cf1  (Count == 0) ? \cf3 new\cf1  \cf3 int\cf1 [0, 0] : result;\par
+\}\par
+\par
+\b\f2\fs24 Output\par
+\b0\fs16\par
+0,3\par
+0,4\par
+1,3\par
+1,4\par
+3,6\par
+\ul\tab\tab\b\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+\par
+\ulnone\fs24 Challenge exercise\b0\fs16\par
+\b\fs24\par
+Input\par
+\par
+\b0\f1\fs16 Console.Clear();\par
+Random random = \cf3 new\cf1  Random();\par
+\par
+Console.WriteLine(\cf2 "Would you like to play? (Y/N)"\cf1 );\par
+\par
+\cf3 if\cf1  (ShouldPlay())\par
+\{\par
+    PlayGame();\par
+\}\par
+\par
+\cf3 void\cf1  PlayGame()\par
+\{\par
+    \cf3 var\cf1  play = \cf3 true\cf1 ;\par
+\par
+    \cf3 while\cf1  (play)\par
+    \{\par
+        \cf3 var\cf1  target = 0;\par
+        \cf3 var\cf1  roll = 0;\par
+        target = Dice(6);\par
+        roll = Dice(7);\par
+\par
+        Console.WriteLine(\cf2 $"Roll a number greater than \cf1\{target\}\cf2  to win!"\cf1 );\par
+        Console.WriteLine(\cf2 $"You rolled a \cf1\{roll\}\cf2 "\cf1 );\par
+        Console.WriteLine(WinOrLose(target, roll));\par
+        Console.WriteLine(\cf2 "\\nPlay again? (Y/N)"\cf1 );\par
+\par
+        play=ShouldPlay();\par
+    \}\par
+\}\par
+\par
+\cf3 string\cf1  WinOrLose(\cf3 int\cf1  target,\cf3 int\cf1  roll)\par
+\{\par
+    \cf3 return\cf1  (target <= roll) ? \cf2 "You Win!"\cf1  : \cf2 "You Lose!"\cf1 ;\par
+\}\par
+\cf3 int\cf1  Dice(\cf3 int\cf1  number) \par
+\{ \par
+    \cf3 return\cf1  random.Next(1,7);\par
+\}\par
+\cf3 bool\cf1  ShouldPlay()\par
+\{\par
+    \cf3 string\cf1 ? yesNo = \cf2 "n"\cf1 ;\par
+    yesNo = Console.ReadLine();\par
+    \cf3 if\cf1  (yesNo==\cf3 null\cf1 ) yesNo = \cf2 "n"\cf1 ;\cf4 // All these two lines do is get rid of a green sqiguly line\cf1\par
+    \cf3 return\cf1  yesNo.ToLower().Equals(\cf2 "y"\cf1 );\par
+\}\b\f2\par
+\cf0\f0\par
+\fs20 Output\par
+\par
+\b0 Would you like to play? (Y/N)\par
+Y\par
+Roll a number greater than 2 to win!\par
+You rolled a 1\par
+You lose!\par
+\par
+Play again? (Y/N)\par
+Y\par
+Roll a number greater than 3 to win!\par
+You rolled a 5\par
+You win!\par
+\par
+Play again? (Y/N)\par
+Y\par
+Roll a number greater than 2 to win!\par
+You rolled a 3\par
+You win!\par
+\par
+Play again? (Y/N)\par
+N\par
+}
+ 
